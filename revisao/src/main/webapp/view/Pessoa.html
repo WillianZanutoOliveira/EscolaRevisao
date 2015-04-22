@@ -1,0 +1,46 @@
+<div class="row" ng-init="iniciar()">
+    <form class="horizontal">
+        <div class="row" style="margin-top: 10px; margin-left: 10px;">
+            <div class="row col-md-12">
+                <div class="col-md-3">
+                    Código <input type="text" class="form-control" ng-model="pessoa.id" ng-disabled="!isNovo"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                Nome <input type="text" class="form-control" ng-model="pessoa.nome"/>
+            </div>
+
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-5" style="margin-top: 10px;">
+                <button type="button" class="btn btn-success" ng-click="salvar()"> Salvar </button>
+                <button type="button" class="btn btn-primary" ng-click="atualizar()"> Atualizar </button>
+            </div>
+        </div>
+    </form>
+    <div class="row"style="margin-left: 10px;">
+        <div class="col-md-12">
+            <input type="text" style="margin-top: 10px;" class="form-control" placeholder="Busca" ng-model="search">
+        </div>
+    </div>
+    <table class="table table-striped" style="margin-top: 10px; margin-left: 10px;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="p in pessoas| filter:search">
+                <td>{{p.id}}</td>
+                <td>{{p.nome}}</td>
+                <td>
+                    <a class="btn btn-danger" href="#/Pessoa/novo" ng-click="excluir(p)">Excluir</a>
+                    <a class="btn btn-warning" href="#/Pessoa/novo" ng-click="alterar(p)">Alterar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
